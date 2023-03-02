@@ -1,41 +1,51 @@
 import { Children } from "react";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import Footer from "./components/Footer/Footer";
-import Navbar from "./components/Navbar/Navbar";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet
+} from "react-router-dom";
+import "./app.scss"
+
 import Home from "./pages/Home/Home";
 import Product from "./pages/Product/Product";
 import Products from "./pages/Products/Products";
-import "./app.scss"
+
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
 
 const Layout = () => {
   return (
     <div className="app">
-      <Navbar />
-      <Outlet />
-      <Footer />
+      <Navbar/>
+      {/* represents different pages */}
+      <Outlet/>
+      <Footer/>
     </div>
-  );
-};
+  )
+}
 
+// https://reactrouter.com/en/main/start/tutorial
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: <Layout/>,
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <Home/>,
       },
       {
         path: "/products/:id",
-        element: <Products />,
+        element: <Products/>,
       },
       {
         path: "/product/:id",
-        element: <Product />,
+        element: <Product/>,
       },
-    ],
-  },
+    ]
+  }
+
+  
 ]);
 
 function App() {
